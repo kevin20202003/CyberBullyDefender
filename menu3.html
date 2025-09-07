@@ -1,0 +1,586 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        color: #f2f5f7;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+
+
+    .dropbtn {
+        margin-top: 20px;
+        border: none;
+        position: relative;
+        display: block;
+        transition: 0.5s;
+        color: white;
+        cursor: pointer;
+        font-size: 10px;
+
+    }
+
+    .dropbtn::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        top: 100%;
+        left: 0;
+        transition: transform 0.5s;
+        transform: scalex(0);
+        transform-origin: right;
+        background-color: #289bb8;
+    }
+
+    .dropbtn:hover {
+        color: #ffffff;
+    }
+
+
+    .dropbtn:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+
+
+    .dropdown-content a {
+        font-size: 11px;
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 3px;
+        top: 100%;
+        left: 0;
+        transition: transform 0.5s;
+        transform: scalex(0);
+        transform-origin: right;
+        background-color: #289bb8;
+    }
+
+    .dropdown-content a:hover {
+        color: #ffffff;
+    }
+
+
+    .dropdown-content a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+
+    .dropdown {
+        margin-top: 3%;
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    ul.menu {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    ul.menu {
+        display: inline-block;
+    }
+
+    ul.menu a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+
+    }
+
+    .menu1 {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 15%;
+        width: 100%;
+        background-color: transparent;
+        z-index: 999;
+        transition: background-color 0.7s ease-in-out;
+        /* Transición en el color de fondo */
+    }
+
+    .menu2 {
+        display: flex;
+        padding: 1px 2px;
+
+    }
+
+
+    .dropdown {
+        position: relative;
+
+    }
+
+    .dropbtn {
+        color: #ddd;
+        margin-top: 100px;
+        margin-right: 13px;
+        border: none;
+        outline: none;
+        font-size: 11px;
+        cursor: pointer;
+
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        background-color: transparent;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgb(255, 255, 255);
+        z-index: 999;
+
+    }
+
+    .dropdown-content a {
+        text-decoration: none;
+        display: block;
+        font-size: 11px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
+    .menu1 .dropdown {
+        position: relative;
+    }
+
+    .menu1 .dropdown-content,
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .menu1 .dropdown-content a,
+    .dropdown-content a {
+        display: block;
+        padding: 0px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .menu1 .dropdown .dropbtn {
+        font-family: 'Lato', sans-serif;
+
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: blink 1s infinite;
+
+    }
+
+    .menu1 .dropdown .dropbtn:hover {
+        color: #46d9e4;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-left: 30px;
+        text-decoration: none;
+    }
+
+    .dropbtn {
+        border: 0;
+    }
+
+    .dropdown-content {
+        display: none;
+
+
+        width: auto;
+        min-width: 200px;
+        max-width: 400px;
+        height: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+
+        text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+        color: #46d9e4;
+    }
+
+    .menu1.black-background {
+        background-color: rgb(0, 24, 96);
+        background-color: linear-gradient(90deg, rgba(0, 24, 96, 1) 23%, rgba(0, 16, 65, 1) 47%, rgba(0, 0, 0, 1) 68%);
+        transition: background-color 1.0s ease-in-out;
+    }
+
+    /* Agrega estilos para las viñetas */
+    .dropdown {
+        position: relative;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    /*Styling logo*/
+    .logo {
+        text-align: center;
+    }
+
+    .logo img {
+        height: 8px;
+        width: 9px;
+    }
+
+    /*Styling Links*/
+    .nav-links {
+        margin-left: 120px;
+        display: flex;
+        list-style: none;
+        width: 88vw;
+        padding: 0 0.7vw;
+        justify-content: space-evenly;
+        align-items: center;
+        text-transform: uppercase;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        margin: 0 0.7vw;
+    }
+
+    .nav-links li a:hover {
+        color: #61DAFB;
+    }
+
+    .nav-links li {
+        position: relative;
+    }
+
+    .nav-links li a:hover::before {
+        width: 80%;
+    }
+
+    /*Styling Buttons*/
+    .login-button {
+        color: #ffffff;
+        background-color: transparent;
+        border: 1.5px solid #f2f5f7;
+        border-radius: 2em;
+        padding: 0.6rem 0.8rem;
+        margin-left: 2vw;
+        font-size: 13px;
+        cursor: pointer;
+
+    }
+
+    .login-button:hover {
+        color: #131418;
+        background-color: #f2f5f7;
+        border: 1.5px solid #f2f5f7;
+        transition: all ease-in-out 350ms;
+    }
+
+    .join-button {
+        color: #131418;
+        background-color: #61DAFB;
+        border: 1.5px solid #61DAFB;
+        border-radius: 2em;
+        padding: 0.6rem 0.8rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .join-button:hover {
+        color: #f2f5f7;
+        background-color: transparent;
+        border: 1.5px solid #f2f5f7;
+        transition: all ease-in-out 350ms;
+    }
+
+    /*Styling Hamburger Icon*/
+    .hamburger div {
+        width: 30px;
+        height: 3px;
+        background: #f2f5f7;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    /*Stying for small screens*/
+    @media screen and (max-width: 1155px) {
+
+        nav {
+            position: fixed;
+            z-index: 3;
+        }
+
+
+        .hamburger {
+            margin-top: -20px;
+            margin-left: 90%;
+            display: block;
+            position: absolute;
+            cursor: pointer;
+
+            top: 50%;
+            transform: translate(-5%, -50%);
+            z-index: 2;
+            transition: all 0.7s ease;
+        }
+
+        .nav-links {
+            position: fixed;
+            background: #131418;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column;
+            clip-path: circle(50px at 100% -20%);
+            -webkit-clip-path: circle(50px at 100% -10%);
+            /* ... otros estilos ... */
+            transition: all 0.9s ease-out;
+            /* Ajusta la duración de la transición */
+            pointer-events: none;
+            opacity: 0;
+            /* Agrega una opacidad inicial para que el menú esté oculto */
+            transform: translateX(100%);
+            /* Empieza fuera de la pantalla */
+        }
+
+        .nav-links.open {
+            clip-path: circle(1000px at 50%);
+            -webkit-clip-path: circle(1000px at 50%);
+            pointer-events: all;
+            opacity: 1;
+            /* Cambia la opacidad para mostrar el menú */
+            transform: translateX(0);
+            /* Muestra el menú en la pantalla */
+        }
+
+        .nav-links li {
+            color: #f2f5f7;
+            text-align: center;
+            right: 30%;
+            text-align: justify;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+            /* Agrega una transición de opacidad para los enlaces */
+        }
+
+        .home {
+
+            margin-right: 90%;
+        }
+
+        .nav-links.open li.fade {
+            opacity: 1;
+            /* Muestra los enlaces cuando el menú está abierto */
+        }
+
+
+
+
+    }
+
+    @media screen and (max-width: 390px) {
+
+        nav {
+            position: fixed;
+            z-index: 3;
+        }
+
+
+        .hamburger {
+            margin-top: -20px;
+            margin-left: 55%;
+            display: block;
+            position: absolute;
+            cursor: pointer;
+
+            top: 50%;
+            transform: translate(-5%, -50%);
+            z-index: 2;
+            transition: all 0.7s ease;
+        }
+
+        .nav-links {
+            position: fixed;
+            background: #131418;
+            height: 100vh;
+            width: 100%;
+            flex-direction: column;
+
+            /* ... otros estilos ... */
+            transition: all 0.9s ease-out;
+            /* Ajusta la duración de la transición */
+            pointer-events: none;
+            opacity: 0;
+            /* Agrega una opacidad inicial para que el menú esté oculto */
+            transform: translateX(100%);
+            /* Empieza fuera de la pantalla */
+        }
+
+        .nav-links.open {
+
+            pointer-events: all;
+            opacity: 1;
+            /* Cambia la opacidad para mostrar el menú */
+            transform: translateX(0);
+            /* Muestra el menú en la pantalla */
+        }
+
+        .nav-links li {
+            color: #f2f5f7;
+            text-align: center;
+            right: 30%;
+            text-align: justify;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
+            /* Agrega una transición de opacidad para los enlaces */
+        }
+
+        .home {
+
+            margin-right: 90%;
+        }
+
+        .nav-links.open li.fade {
+            opacity: 1;
+            /* Muestra los enlaces cuando el menú está abierto */
+
+        }
+
+        .nav-links {
+            width: 85%;
+            right: -15%;
+        }
+
+    }
+
+    /*Animating Hamburger Icon on Click*/
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .toggle .line2 {
+        transition: all 0.7s ease;
+        width: 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .home {
+        font-size: 18px;
+    }
+
+    @media (max-width: 1180px) {
+        .menu1 .nav-links li a {
+            font-size: 12px;
+            /* Tamaño de fuente más pequeño */
+            padding: 5px 5px;
+            /* Espaciado más pequeño */
+        }
+    }
+</style>
+
+    <nav class="menu1">
+            <img src="imagenes/logoultimate.png" alt="" class="logo">
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-links">
+            <div class="dropdown">
+                <li><a id="btnPantalla2" class="dropbtn" href="pantalla2super.php" >Empresas</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a class="dropbtn">Educacion</a>
+                    <div class="dropdown-content">
+                        <a href="#" >Docentes</a>
+                        <a href="#" >Padres de familia</a>
+                        <a href="#" >Niños </a>
+                        <a href="#" >Jovenes</a>
+                        <a href="#" >Ciudadania</a>
+                    </div>
+                </li>
+            </div>
+            <div class="dropdown">
+                <li><a id="btnPantalla3" class="dropbtn" href="pantalla3super.php">Capacitaciones</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a id="btnPantalla4" class="dropbtn" href="pantalla4super.php">Eventos</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a id="btnPantalla5" class="dropbtn" href="pantalla5super.php">Cuentanos tu caso</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a id="btnPantalla6" class="dropbtn" href="pantalla6super.php">Delitos informaticos</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a class="login-button" href="cierresesion.php">Salir</a></li>
+            </div>
+            <div class="dropdown">
+                <li><a class="login-button" href="index.php">Usuario</a></li>
+            </div>
+            <div class="dropdown">
+                <a href="indexpagemaster.php"><i class="fa-solid fa-house home"></i></a>
+            </div>
+
+        </ul>
+    </nav>
+
+    <!--Mantén este bloque-->
+    <script src="menu.js"></script>

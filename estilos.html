@@ -1,0 +1,993 @@
+<style>
+    .text-container {
+        height: 80%;
+        width: 60%;
+        display: flex;
+        /* Hacer que el contenedor sea un flex container */
+        justify-content: center;
+        /* Centrar horizontalmente */
+        align-items: center;
+        /* Centrar verticalmente */
+        color: #ffffff;
+        max-width: 100%;
+        background-repeat: no-repeat;
+        background-image: url('imagenes/fondo.png');
+        background-size: cover;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #000000;
+        word-wrap: break-word;
+        margin-left: 20%;
+    }
+
+    .home {
+        color: white;
+    }
+
+    .concepto1 {
+        display: flex;
+    }
+
+    .concepto2 {
+        display: flex;
+    }
+
+    .ci1 {
+        margin-top: 90px;
+    }
+
+    .ci2 {
+        margin-top: 90px;
+    }
+
+    /* Estilo para el botón de activar */
+    #activarButton {
+        background-color: green;
+        /* Color verde */
+        color: white;
+        /* Texto en blanco */
+    }
+
+    /* Estilo para el botón de desactivar */
+    #desactivarButton {
+        background-color: red;
+        /* Color rojo */
+        color: white;
+        /* Texto en blanco */
+    }
+
+    /* Estilo para el botón de activar */
+    #activarButton.active-button {
+        background-color: green;
+        /* Color verde cuando está activo */
+        color: white;
+        /* Texto en blanco */
+    }
+
+    /* Estilo para el botón de desactivar */
+    #desactivarButton.active-button {
+        background-color: red;
+        /* Color rojo cuando está activo */
+        color: white;
+        /* Texto en blanco */
+    }
+
+
+    body {
+        height: 100vh;
+        /* 100% de la altura de la ventana del navegador */
+        width: 100%;
+        /* 100% del ancho de la ventana del navegador */
+        margin: 0;
+        padding: 0;
+    }
+
+
+
+    input {
+        color: #000000;
+    }
+
+    button {
+        color: #000000;
+    }
+
+    i {
+        color: #000000;
+    }
+
+
+    .vi video {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 102%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .contenedor {
+        width: 80%;
+        max-width: 1200px;
+        overflow: hidden;
+        margin: auto;
+        padding: 140px 0;
+    }
+
+    .cyber {
+        padding-top: 15%;
+        padding-bottom: 2%;
+        color: rgb(219, 219, 219);
+
+
+        margin-bottom: 20px;
+    }
+
+
+    .cyber h1{
+        
+        font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+        font-size: 100px;
+        text-align: center;
+    }
+
+
+
+
+    .subcyber {
+        margin-top: -40px;
+        color: rgb(219, 219, 219);
+        font-family: Arial, Helvetica, sans-serif;
+
+        margin-bottom: 20px;
+    }
+
+    .subcyber p {
+        font-size: 26px;
+        font-family: monospace;
+
+    }
+
+
+    /*.hamburger {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgb(202, 202, 202);
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu-navegacion {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 25vw;
+        height: 100%;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 25px 40px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(110%);
+    }
+
+    .menu-navegacion a {
+        text-decoration: none;
+        color: rgb(248, 248, 248);
+        font-size: 22px;
+    }*/
+
+    .spread {
+        transform: translateX(0);
+    }
+
+    .copy {
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        color: white;
+    }
+
+    p {
+        color: #fcfcfc;
+    }
+
+
+    .social-media {
+        height: 1vh;
+        padding-left: 82%;
+
+    }
+
+    .social-media ul {
+        display: flex;
+        margin-right: 10px;
+
+
+    }
+
+
+
+    .social-media ul a {
+        font-size: 28px;
+        color: #fff;
+        text-decoration: none;
+        margin: 7px;
+    }
+
+    .social-media ul a i {
+        transition: transform 0.3s, color 0.3s;
+        margin-top: 190px;
+    }
+
+    .social-media ul a:hover i {
+        transform: scale(1.2);
+    }
+
+    .politicas_terminos {
+        margin: 10px 30px;
+    }
+
+    .copyright {
+        margin: 0px 30px;
+    }
+
+    .datos {
+        margin: 0px 30px;
+    }
+
+
+
+    #face i {
+        color: #3b5998;
+    }
+
+    /*Aqui se quedo la primera optimizacion */
+    #tw i {
+        color: #003455;
+    }
+
+    #ig i {
+        color: #e4405f;
+    }
+
+    @keyframes animate {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    .line {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 2px;
+        background: #fff;
+        margin-bottom: 60px;
+    }
+
+
+
+
+    .contenedor {
+        display: none;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #fff;
+        margin: 10px;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    .clase {
+        margin: 200px 0;
+        text-align: center;
+        font-size: 24px;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+
+
+
+    .message {
+        background-color: yellow;
+        padding: 20px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .capacitaciones {
+        width: auto;
+        height: 100px;
+    }
+
+    .advertisement {
+        background-color: transparent;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .advertisement2 {
+        background-color: #333333;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+
+    .close-btn {
+        position: fixed;
+        top: 90px;
+        right: 5%;
+        font-size: 40px;
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+
+
+
+    .logo {
+        position: fixed;
+        top: 1%;
+        left: 35px;
+        width: 175px;
+        height: 160px;
+        z-index: 999;
+    }
+
+    #contenedor1 {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+
+
+    .content {
+        z-index: 1;
+    }
+
+    .ini {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        margin: -50px;
+    }
+
+    .EmpresaContainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 200px;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: blink 1s infinite;
+        color: #547ae2;
+        margin: -300px;
+    }
+
+    .empresa-details1,
+    .empresa-details2,
+    .empresa-details3,
+    .empresa-details4,
+    .empresa-details5,
+    .empresa-details6 {
+        color: #ffffff;
+    }
+
+    .empresa-details1:hover,
+    .empresa-details2:hover,
+    .empresa-details3:hover,
+    .empresa-details4:hover,
+    .empresa-details5:hover,
+    .empresa-details6:hover {
+        background-color: #6015c2;
+    }
+
+    .empresa {
+        width: 300px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+
+
+
+    .empresa-details {
+        margin-top: 10px;
+    }
+
+    .empresa-name {
+        font-weight: bold;
+    }
+
+
+
+
+    .car-image {
+        width: 90%;
+        height: 310px;
+    }
+
+    .eve {
+        width: 50%;
+        display: inline-block;
+        text-align: center;
+    }
+
+
+    .ojala {
+        height: 800px;
+    }
+
+
+    .form-container {
+
+        margin: 0 auto;
+        text-align: left;
+    }
+
+
+
+
+
+    .titulosform {
+        text-align: center;
+        margin-top: -130px;
+        color: white;
+    }
+
+    .form-label {
+        color: white;
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-input {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid black;
+    }
+
+    .form-dropdown {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .form-button,
+    .form-button2 {
+        padding: 10px 10px;
+        background-color: #ff0000;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        border: none;
+    }
+
+
+
+    .radio-buttons {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        margin-top: -57px;
+    }
+
+
+    .motivational-message {
+        width: 20%;
+        height: 40vh;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #742836;
+    }
+
+    .motivational-message p {
+        font-size: 14px;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .motivational-message2 {
+        width: 18%;
+        height: 17vh;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #742836;
+    }
+
+    .motivational-message2 p {
+        font-size: 14px;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .motivational-message3 {
+        width: 20%;
+        height: 13vh;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #742836;
+        margin-left: -400px;
+        margin-top: 100px;
+    }
+
+    .motivational-message3 p {
+        font-size: 14px;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .motivational-message4 {
+        width: 22%;
+        height: 20vh;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #742836;
+        margin-left: -400px;
+        margin-top: 700px;
+    }
+
+    .motivational-message4 p {
+        font-size: 14px;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .motivational-message5 {
+        width: 20%;
+        height: 13vh;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #742836;
+        margin-left: -400px;
+        margin-top: 800px;
+    }
+
+    .motivational-message5 p {
+        font-size: 14px;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px black;
+    }
+
+
+    .left-message {
+        float: left;
+        margin-left: 110px;
+        margin-top: 15px;
+    }
+
+    .left-message2 {
+        float: left;
+        margin-left: -250px;
+        margin-top: 610px;
+    }
+
+    .left-message3 {
+        float: left;
+        margin-left: -417px;
+        margin-top: 800px;
+    }
+
+    .right-message {
+        float: right;
+        margin-top: -885px;
+        margin-right: 95px;
+    }
+
+    .right-message2 {
+        float: right;
+        margin-top: -300px;
+        margin-right: 125px;
+    }
+
+    .right-message3 {
+        float: right;
+        margin-top: -100px;
+        margin-right: 40px;
+    }
+
+    .label {
+        color: white;
+    }
+
+    .anuncio2 {
+        max-width: 70%;
+        max-height: 60%;
+        position: absolute;
+        margin-left: 135px;
+    }
+
+    /* Estilos para el input de fecha */
+    input[type="date"] {
+        border: none;
+        background-color: #333333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilos para el texto del input de fecha */
+    input[type="date"]::placeholder {
+        color: #999;
+    }
+
+    #txtComentario {
+        height: 100px;
+    }
+
+    .formimg {
+
+
+        /* Establece un ancho máximo del 100% para que la imagen se ajuste al contenedor */
+        height: 30%;
+        width: 66%;
+        /* Mantiene la relación de aspecto de la imagen */
+        margin-top: 50px;
+        /* Cambia este valor según tu preferencia */
+        margin-left: -20px;
+
+    }
+
+
+
+    .soloesto {
+        text-align: center;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -5px;
+    }
+
+    /* Estilo para el botón del menú seleccionado */
+    .dropbtn.selected {
+        background-color: #e6e6e6;
+    }
+
+    /* Estilo para el contenido del menú seleccionado */
+    .dropdown.selected .dropdown-content {
+        display: block;
+    }
+
+    .container1 {
+
+        background-image: url('imagenes/fondo.png');
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        width: 100%;
+        /* Otros estilos para el contenedor */
+    }
+
+    /* Estilo para limitar el ancho de los elementos de texto */
+    .description {
+
+        max-width: 100%;
+        /* Ajusta el valor según tus necesidades */
+        margin: 0 auto;
+        /* Centra el elemento de texto horizontalmente */
+    }
+
+    /* Otros estilos para tus elementos según sea necesario */
+
+
+    .container1 .row,
+    .container1 img,
+    .container1 .col-5,
+    .container1 .col-6 {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    .description h2 {
+        font-size: 29px;
+        color: white;
+    }
+
+    .description p {
+        font-size: 16px;
+
+    }
+
+
+
+    .aaa {
+        box-shadow: 0 0 10px #00d4ff;
+        width: 90%;
+        margin: 80px;
+        padding: 20px;
+        margin-left: 40px;
+        text-align: center;
+        height: auto;
+    }
+
+
+    /* Estilos para el encabezado y el menú hamburguesa */
+
+
+
+
+    /* Estilos para pantallas pequeñas (celulares) */
+    @media screen and (max-width: 1180px) {
+        * {
+            height: auto;
+            width: auto;
+        }
+
+        .container1 {
+            display: block;
+            /* Cambia display a block para que no haya conflictos con flexbox */
+            height: auto;
+            width: 100%;
+            position: relative;
+            background-size: cover cover;
+            background-position: center;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 20px;
+            /* Otros estilos para el contenedor */
+        }
+
+        .cyber h1 {
+            font-size: 8vw;
+            margin-top: 100px;
+        }
+
+
+
+        .dropdown {
+            margin-left: 350px;
+        }
+
+        .aaa {
+            box-shadow: 0 0 10px #00d4ff;
+            width: 90%;
+            margin: 20px;
+            padding: 20px;
+            margin-left: 40px;
+            height: 1100px;
+            text-align: center;
+            height: auto;
+
+        }
+
+        .aaa img {
+            margin-top: 35px;
+            height: auto;
+            width: 220px;
+            margin-bottom: 60px;
+            /* Agrega un margen inferior */
+        }
+
+        .description p {
+            font-size: 12px;
+        }
+
+        .description {
+            width: auto;
+            margin-bottom: 100px;
+            margin-top: -60px;
+        }
+
+    }
+
+
+    @media screen and (max-width: 975px) {
+        .cyber h1 {
+            font-size: 7vw;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .container1 {
+            display: block;
+            height: auto;
+            width: 100%;
+            position: relative;
+            background-size: cover cover;
+            background-position: center;
+            text-align: center;
+            /* Centra el contenido horizontalmente */
+            padding: 20px;
+            /* Otros estilos para el contenedor */
+        }
+
+        /* También puedes centrar verticalmente el contenido si es necesario */
+        .container1:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+
+        .ci1 {
+            margin-left: 0;
+            /* Elimina el margen izquierdo para centrar en pantalla pequeña */
+        }
+
+        .ci2 {
+            margin-left: 0;
+            /* Elimina el margen izquierdo para centrar en pantalla pequeña */
+        }
+
+        .subcyber p {
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+
+
+    /* Estilos para pantallas pequeñas (celulares) */
+    @media screen and (max-width: 390px) {
+        * {
+            height: auto;
+            width: auto;
+        }
+
+
+        .subcyber p {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .container1 {
+            display: block;
+            /* Cambia display a block para que no haya conflictos con flexbox */
+            height: auto;
+            width: 100%;
+            position: relative;
+            background-size: cover cover;
+            background-position: center;
+            padding: 20px;
+            /* Otros estilos para el contenedor */
+        }
+
+        .cyber h1 {
+            font-size: 7vw;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .menu1 {
+            margin-left: 100px;
+        }
+
+
+    }
+
+    .dropdown {
+        margin-left: 350px;
+    }
+
+    .aaa {
+        box-shadow: 0 0 10px #00d4ff;
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+        margin-left: 40px;
+        height: 1100px;
+        text-align: center;
+        height: auto;
+
+    }
+
+    .aaa img {
+        margin-top: 10%;
+        height: auto;
+        width: 65%;
+        margin-bottom: 60px;
+        /* Agrega un margen inferior */
+    }
+
+
+
+    .description {
+        margin-bottom: 100px;
+        margin-top: -60px;
+    }
+
+
+
+
+
+    @media screen and (max-width: 1180px) {
+        .imganuncio {
+            height: 70vh;
+            width: 120vh;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .imganuncio {
+            height: 70vh;
+            width: 100vh;
+        }
+    }
+
+    @media screen and (max-width: 850px) {
+        .imganuncio {
+            height: 70vh;
+            width: 80vh;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .imganuncio {
+            height: 60vh;
+            width: 50vh;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .imganuncio {
+            height: 50vh;
+            width: 30vh;
+        }
+    }
+
+    @media screen and (max-width: 470px) {
+        .cyber h1{
+            margin-top: 40%;
+        }
+
+        .subcyber p{
+            margin-top: 10%;
+        }
+    }
+</style>
